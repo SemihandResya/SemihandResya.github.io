@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Semih & Resya Wedding</title>
+<title>Resya & Semih Wedding</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
@@ -30,11 +30,11 @@ body::before{
 content:"";
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.55);
 z-index:-1;
 }
 
-/* Opening Screen */
+/* Opening */
 .opening{
 position:fixed;
 width:100%;
@@ -65,7 +65,7 @@ letter-spacing:2px;
 cursor:pointer;
 }
 
-/* Main Content */
+/* Content */
 .content{
 display:none;
 padding:80px 20px;
@@ -78,14 +78,13 @@ font-size:3rem;
 letter-spacing:3px;
 text-transform:uppercase;
 margin-bottom:20px;
-text-shadow:0 0 12px rgba(212,175,55,0.4);
+text-shadow:0 0 15px rgba(212,175,55,0.4);
 }
 
 h3{
 font-family:'Cormorant Garamond', serif;
 font-size:1.8rem;
 margin-bottom:15px;
-letter-spacing:1px;
 }
 
 .section{
@@ -109,7 +108,6 @@ color:white;
 text-decoration:none;
 transition:0.3s;
 font-family:'Cinzel', serif;
-letter-spacing:1px;
 }
 
 .button:hover{
@@ -132,7 +130,7 @@ border-radius:15px;
 min-width:80px;
 }
 
-/* RSVP Form */
+/* RSVP */
 form{
 max-width:400px;
 margin:30px auto;
@@ -157,24 +155,6 @@ padding:14px;
 border-radius:40px;
 cursor:pointer;
 font-family:'Cinzel', serif;
-letter-spacing:2px;
-}
-
-/* Wave Animation */
-.wave{
-position:fixed;
-bottom:0;
-width:100%;
-height:120px;
-background:url('https://i.ibb.co/7y0QpJz/wave.png') repeat-x;
-background-size:1000px 120px;
-animation:waveMove 15s linear infinite;
-opacity:0.4;
-}
-
-@keyframes waveMove{
-0%{background-position-x:0;}
-100%{background-position-x:1000px;}
 }
 
 @keyframes fadeIn{
@@ -197,7 +177,7 @@ h2{font-size:2.3rem;}
 <body>
 
 <div class="opening" id="opening">
-<h1>Semih & Resya</h1>
+<h1>Resya & Semih</h1>
 <button onclick="openInvitation()">Open Invitation</button>
 </div>
 
@@ -254,8 +234,6 @@ Your presence is deeply anticipated and will make our celebration even more mean
 
 </div>
 
-<div class="wave"></div>
-
 <script>
 function openInvitation(){
 document.getElementById("opening").style.opacity="0";
@@ -298,13 +276,17 @@ document.getElementById("rsvpForm").addEventListener("submit",function(e){
 e.preventDefault();
 let formData=new FormData(this);
 
-fetch("https://script.google.com/macros/s/AKfycbzIbMxCfGcAeKcfJjvcjqLItOUZ_msLcqCEnU8xeSY_9JPkWZ02Wnxo-88GX-Bi0iad/exec",{
+fetch("https://script.google.com/macros/s/AKfycbyOrWWWzchhMNzFBYNvB8UXuPQvuK1wq1Q-wSg7PRYt6_ZbDnl6bVxNM_ahxDV8lm0B/exec",{
 method:"POST",
-body:formData,
-mode:"no-cors"
-}).then(()=>{
+body:formData
+})
+.then(response=>response.text())
+.then(()=>{
 document.getElementById("responseMessage").innerHTML="Thank you for your RSVP 💕";
 this.reset();
+})
+.catch(()=>{
+document.getElementById("responseMessage").innerHTML="Something went wrong. Please try again or RSVP through Whatsapp.";
 });
 });
 </script>
