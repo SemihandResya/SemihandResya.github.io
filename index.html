@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resya & Semih Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #f8f5f0;
+    color: #5a4634;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.opening {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: url('YOUR_IMAGE_NAME.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+    transition: 1s ease;
+}
+
+.opening h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #fff;
+}
+
+.opening button {
+    padding: 12px 25px;
+    border: none;
+    background: #d4af37;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.content {
+    padding: 60px 20px;
+    display: none;
+}
+
+h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background: #b08968;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #7f5539;
+}
+
+iframe {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    border: none;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Opening Screen -->
+<div class="opening" id="opening">
+    <h1>Resya & Semih</h1>
+    <button onclick="openInvitation()">Open Invitation</button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="YOUR_MUSIC_LINK.mp3" type="audio/mp3">
+</audio>
+
+<!-- Main Content -->
+<div class="content" id="content">
+
+    <h2>Resya Marchelin & Semih Yilmaz</h2>
+
+    <p>
+    With joyful hearts, we invite you to celebrate our wedding.
+    </p>
+
+    <p>
+    Sunday, 28 June 2026<br>
+    5:30 PM (WITA)<br>
+    Karma Kandara, Uluwatu, Bali
+    </p>
+
+    <p>
+    Sunset Ceremony followed by Reception
+    </p>
+
+    <p style="font-style: italic; margin-top: 30px;">
+    Your presence is deeply anticipated and will make our celebration even more meaningful.
+    </p>
+
+    <!-- Buttons -->
+    <div>
+        <a class="button" href="https://maps.app.goo.gl/" target="_blank">View Location</a>
+        <a class="button" href="https://wa.me/61418581174" target="_blank">WhatsApp RSVP</a>
+        <a class="button" href="#rsvp">RSVP Guest</a>
+    </div>
+
+    <!-- RSVP Form (Google Script Embed) -->
+    <div id="rsvp">
+        <iframe src="https://script.google.com/macros/s/AKfycbwnlW_QfRgpVQasISn-FaKPZ4U8vGmZxDRQ1JO6ZFk5hV1JGcqlEscshIPVvdyZbMFE/exec"></iframe>
+    </div>
+
+</div>
+
+<script>
+function openInvitation() {
+    document.getElementById("opening").style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById("opening").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("bgMusic").play();
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
