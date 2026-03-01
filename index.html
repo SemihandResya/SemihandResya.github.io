@@ -8,139 +8,329 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    background: #f8f5f0;
-    color: #5a4634;
-    text-align: center;
-    overflow-x: hidden;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.opening {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: url('background.jpg') center/cover repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 999;
-    transition: 1s ease;
+body{
+    font-family:'Playfair Display',serif;
+    background:#f8f5f0;
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:#5a4634;
+    text-align:center;
+    overflow-x:hidden;
+    transition:1.5s ease;
 }
 
-.opening h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
-    color: #fff;
+/* ===== OPENING ===== */
+.opening{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:url('background.jpg') center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:999;
+    transition:1.2s ease;
 }
 
-.opening button {
-    padding: 12px 25px;
-    border: none;
-    background: #d4af37;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 30px;
+.opening h1{
+    font-family:'Great Vibes',cursive;
+    font-size:3rem;
+    color:white;
+    margin-bottom:20px;
 }
 
-.content {
-    padding: 60px 20px;
-    display: none;
+.opening button{
+    padding:14px 30px;
+    border:none;
+    background:#d4af37;
+    color:white;
+    font-size:1rem;
+    border-radius:30px;
+    cursor:pointer;
 }
 
-h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
+/* ===== CONTENT ===== */
+.content{
+    display:none;
+    padding:60px 20px 120px 20px;
 }
 
-.button {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 25px;
-    background: #b08968;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: 0.3s;
+section{
+    margin-bottom:90px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
 }
 
-.button:hover {
-    background: #7f5539;
+section.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-iframe {
-    width: 100%;
-    max-width: 500px;
-    height: 500px;
-    border: none;
-    margin-top: 20px;
+h2{
+    font-family:'Great Vibes',cursive;
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+p{
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    background:rgba(255,255,255,0.8);
+    padding:15px 20px;
+    border-radius:15px;
+    min-width:70px;
+}
+
+.time-box span{
+    font-size:1.5rem;
+    font-weight:bold;
+    display:block;
+}
+
+/* ===== BUTTON ===== */
+.button{
+    display:inline-block;
+    margin:10px;
+    padding:12px 25px;
+    background:#b08968;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.4s;
+    font-size:0.9rem;
+}
+
+.button:hover{
+    background:#7f5539;
+    transform:scale(1.05);
+}
+
+/* ===== RSVP ===== */
+form{
+    max-width:400px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input, select, textarea{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-family:'Playfair Display',serif;
+}
+
+.submit-btn{
+    background:#d4af37;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* ===== OCEAN PARALLAX WAVES ===== */
+.wave-container{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:120px;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.wave{
+    position:absolute;
+    width:200%;
+    height:100%;
+    background:rgba(176,137,104,0.3);
+    border-radius:40%;
+    animation:waveMove 10s linear infinite;
+}
+
+.wave:nth-child(2){
+    bottom:10px;
+    opacity:0.5;
+    animation-duration:15s;
+}
+
+@keyframes waveMove{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+}
+
+/* ===== MUSIC BUTTON ===== */
+.music-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#d4af37;
+    color:white;
+    border:none;
+    padding:12px 15px;
+    border-radius:50%;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+@media(max-width:600px){
+    h2{font-size:2rem;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Opening Screen -->
 <div class="opening" id="opening">
     <h1>Resya & Semih</h1>
     <button onclick="openInvitation()">Open Invitation</button>
 </div>
 
-<!-- Background Music -->
 <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<!-- Main Content -->
+<button class="music-btn" onclick="toggleMusic()">♪</button>
+
 <div class="content" id="content">
 
-    <h2>Resya Marchelin & Semih Yilmaz</h2>
-
+<section>
+    <h2>Resya Marchelina & Semih Yilmaz</h2>
+    <p>With joyful hearts, we invite you to celebrate our wedding.</p>
     <p>
-    With joyful hearts, we invite you to celebrate our wedding.
+        Sunday, 28 June 2026<br>
+        5:30 PM (WITA)<br>
+        Karma Kandara, Uluwatu, Bali
     </p>
+    <p><i>Sunset Ceremony followed by Reception</i></p>
+</section>
 
-    <p>
-    Sunday, 28 June 2026<br>
-    5:30 PM (WITA)<br>
-    Karma Kandara, Uluwatu, Bali
-    </p>
-
-    <p>
-    Sunset Ceremony followed by Reception
-    </p>
-
-    <p style="font-style: italic; margin-top: 30px;">
-    Your presence is deeply anticipated and will make our celebration even more meaningful.
-    </p>
-
-    <!-- Buttons -->
-    <div>
-        <a class="button" href="https://maps.app.goo.gl/6EtA7wJ9cTGknVYB6" target="_blank">View Location</a>
-        <a class="button" href="https://wa.me/61418581174" target="_blank">WhatsApp RSVP</a>
-        <a class="button" href="#rsvp">RSVP Guest</a>
+<section>
+    <h2>Counting Down To Our Day</h2>
+    <div class="countdown">
+        <div class="time-box"><span id="days"></span>Days</div>
+        <div class="time-box"><span id="hours"></span>Hours</div>
+        <div class="time-box"><span id="minutes"></span>Minutes</div>
+        <div class="time-box"><span id="seconds"></span>Seconds</div>
     </div>
+</section>
 
-/* GOOGLE SHEETS RSVP */
+<section>
+    <h2>RSVP</h2>
+    <p>Your presence is deeply anticipated and will make our celebration even more meaningful.</p>
+
+    <form id="rsvpForm">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <select name="guests" required>
+            <option value="">Number of Guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+        </select>
+        <textarea name="message" rows="3" placeholder="Leave a wish for the couple"></textarea>
+        <button type="submit" class="submit-btn">Send RSVP</button>
+    </form>
+
+    <a class="button" href="https://maps.app.goo.gl/6EtA7wJ9cTGknVYB6" target="_blank">View Location</a>
+    <a class="button" href="https://wa.me/61418581174" target="_blank">WhatsApp RSVP</a>
+
+    <p id="responseMessage" style="margin-top:15px;"></p>
+</section>
+
+</div>
+
+<!-- OCEAN WAVES -->
+<div class="wave-container">
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
+
+<script>
+function openInvitation(){
+    const opening=document.getElementById("opening");
+    opening.style.opacity="0";
+    opening.style.transform="scale(1.1)";
+    setTimeout(()=>{
+        opening.style.display="none";
+        document.getElementById("content").style.display="block";
+        document.body.style.backgroundImage="url('main-background.jpg')";
+        document.getElementById("bgMusic").volume=0.3;
+        document.getElementById("bgMusic").play();
+        revealSections();
+    },1200);
+}
+
+function toggleMusic(){
+    const music=document.getElementById("bgMusic");
+    music.paused ? music.play() : music.pause();
+}
+
+/* COUNTDOWN */
+const weddingDate = new Date("June 28, 2026 17:30:00").getTime();
+setInterval(()=>{
+    const now=new Date().getTime();
+    const gap=weddingDate-now;
+
+    document.getElementById("days").innerText=Math.floor(gap/(1000*60*60*24));
+    document.getElementById("hours").innerText=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+    document.getElementById("minutes").innerText=Math.floor((gap%(1000*60*60))/(1000*60));
+    document.getElementById("seconds").innerText=Math.floor((gap%(1000*60))/1000);
+},1000);
+
+/* Scroll Reveal */
+function revealSections(){
+    const sections=document.querySelectorAll("section");
+    window.addEventListener("scroll",()=>{
+        sections.forEach(sec=>{
+            if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+                sec.classList.add("show");
+            }
+        });
+    });
+}
+
+/* RSVP Submit */
 document.getElementById("rsvpForm").addEventListener("submit",function(e){
-  e.preventDefault();
+    e.preventDefault();
+    const formData=new FormData(this);
 
-  fetch("https://script.google.com/macros/s/AKfycbzQH7-lmIKWii4oLDn7_6lU8oePIg9uSOXie2KGDQIPPFH5txCLAJMx1qPhVu1IpK5V/exec",{
-    method:"POST",
-    body:JSON.stringify({
-      name:document.getElementById("name").value,
-      guests:document.getElementById("guests").value
+    fetch("https://script.google.com/macros/s/AKfycbwnlW_QfRgpVQasISn-FaKPZ4U8vGmZxDRQ1JO6ZFk5hV1JGcqlEscshIPVvdyZbMFE/exec",{
+        method:"POST",
+        body:formData
     })
-  }).then(()=>{
-    alert("Thank you for confirming!");
-    this.reset();
-  });
-
+    .then(res=>res.text())
+    .then(()=>{
+        document.getElementById("responseMessage").innerHTML="Thank you for your RSVP 💕";
+        document.getElementById("rsvpForm").reset();
+    })
+    .catch(()=>{
+        document.getElementById("responseMessage").innerHTML="Something went wrong.";
+    });
 });
-
 </script>
 
 </body>
