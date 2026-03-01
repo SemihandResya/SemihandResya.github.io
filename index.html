@@ -119,18 +119,32 @@ iframe {
 
     <!-- Buttons -->
     <div>
-        <a class="button" href="https://maps.app.goo.gl/" target="_blank">View Location</a>
+        <a class="button" href="https://maps.app.goo.gl/6EtA7wJ9cTGknVYB6" target="_blank">View Location</a>
         <a class="button" href="https://wa.me/61418581174" target="_blank">WhatsApp RSVP</a>
         <a class="button" href="#rsvp">RSVP Guest</a>
     </div>
 
-    <!-- RSVP Form (Google Script Embed) -->
-    <div id="rsvp">
-        <iframe src="https://script.google.com/macros/s/AKfycbwnlW_QfRgpVQasISn-FaKPZ4U8vGmZxDRQ1JO6ZFk5hV1JGcqlEscshIPVvdyZbMFE/exec"></iframe>
-    </div>
+   /* GOOGLE SHEETS RSVP */
+document.getElementById("rsvpForm").addEventListener("submit",function(e){
+  e.preventDefault();
 
-</div>
+  fetch("https://script.google.com/macros/s/AKfycbzQH7-lmIKWii4oLDn7_6lU8oePIg9uSOXie2KGDQIPPFH5txCLAJMx1qPhVu1IpK5V/exec",{
+    method:"POST",
+    body:JSON.stringify({
+      name:document.getElementById("name").value,
+      guests:document.getElementById("guests").value
+    })
+  }).then(()=>{
+    alert("Thank you for confirming!");
+    this.reset();
+  });
 
+});
+
+</script>
+
+</body>
+</html>
 <script>
 function openInvitation() {
     document.getElementById("opening").style.opacity = "0";
